@@ -13,11 +13,67 @@
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
         }
+
+
+        :root{
+            --items-count:6;
+            --width: 150px;
+            --height: 150px;
+            --duration: 12s;
+        }
         
+        .slider{
+            max-width: 1200px; /* Match your container max-width */
+            margin: 48px auto;
+            width: 100%;
+            height: var(--height);
+            position: relative;
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, #fff 10% 90%, transparent);
+        }
+
+
+        img{
+            position: absolute;
+            width: var(--width);
+            height: var(--height);
+            object-fit: contain;
+            left: 100%;
+            animation: autoRunSlider var(--duration) linear infinite;
+
+            animation-delay: calc((var(--pos) - 1) * (var(--duration) / var(--items-count)));
+        }
+
+
+        .slider:hover img{
+            animation-play-state: paused !important;
+            filter: grayscale(1);
+        }
+
+        .slider img:hover {
+            filter: grayscale(0);
+        }
+
+        img {
+            filter: grayscale(0);
+        }
+
+        @keyframes autoRunSlider {
+            from{
+                left:100%
+            }
+
+            to {
+                left: calc(var(--width) * -1);
+            }
+        }
+
+
         body {
             background-color: #111;
             color: #fff;
             line-height: 1.6;
+            
         }
         
         .container {
@@ -53,7 +109,7 @@
         }
         
         .logo span {
-            color: #4DE6C1;
+            color: #61dbfb;
         }
         
         /* Navigation Styles */
@@ -81,14 +137,14 @@
             position: absolute;
             width: 0;
             height: 2px;
-            background: #4DE6C1;
+            background: #61dbfb;
             left: 0;
             bottom: 0;
             transition: width 0.3s ease;
         }
         
         nav ul li a:hover {
-            color: #4DE6C1;
+            color: #61dbfb;
         }
         
         nav ul li a:hover:after {
@@ -97,7 +153,7 @@
         
         /* Hero Section */
         .hero {
-    height: 100vh;
+    height: 100%;
     position: relative;
     overflow: hidden;
 }
@@ -130,7 +186,7 @@
         
         .btn {
             display: inline-block;
-            background: #4DE6C1;
+            background: #61dbfb;
             color: #111;
             padding: 12px 30px;
             border-radius: 50px;
@@ -148,12 +204,12 @@
         
         .btn-outline {
             background: transparent;
-            border: 2px solid #4DE6C1;
-            color: #4DE6C1;
+            border: 2px solid #61dbfb;
+            color: #61dbfb;
         }
         
         .btn-outline:hover {
-            background: #4DE6C1;
+            background: #61dbfb;
             color: #111;
         }
         
@@ -165,7 +221,7 @@
 }
 
         svg path {
-            stroke: #4DE6C1;
+            stroke: #61dbfb;
             stroke-width: 4px;
             fill: none;
         }
@@ -194,7 +250,7 @@
         }
         
         .social-icons a:hover {
-            background: #4DE6C1;
+            background: #61dbfb;
             color: #111;
             transform: translateY(-3px);
         }
@@ -473,6 +529,28 @@ l-7 -35 20 25 c20 24 46 117 37 131 -11 19 43 152 94 228 47 70 71 121 56 121
 
 </div>
 </div>
+
+
+
+<div class="slider">
+    <img src="img/logo-html-5-512.png" alt="first" style="--pos: 1"/>
+    <img src="img/logo-css-3-512.png" alt="second" style="--pos: 2"/>
+    <img src="img/logo-javascript-icon-512.png" alt="third" style="--pos: 3"/>
+    <img src="img/logo-react-512.png" alt="fourth" style="--pos: 4"/>
+    <img src="img/tailwind-css-512.png" alt="fifth" style="--pos: 5"/>
+    <img src="img/figma-512.png" alt="sixth" style="--pos: 6"/>
+</div>
+
+
+
+
+
+
+
+
+
+</section>
+
 <script>
     const allpaths = document.querySelectorAll("path");
 
