@@ -373,7 +373,253 @@
 
         
         
+
+        .my-work{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.4);
+            min-height: 100vh;
+            width: 100%;
+            padding-top: 20px;
+            border-radius: 48px 48px 0 0;
+        }
+
+
+        .sliderbox{
+            position: relative;
+            width: 300px;
+            height: 200px;
+            transform-style: preserve-3d;
+            animation: animate 20s linear infinite;
+        }
+
+
+        @keyframes animate {
+            0%{
+                transform: perspective(2000px) rotateY(0deg);
+            }
+
+            100%{
+                transform: perspective(2000px) rotateY(360deg);
+            }
+        }
+
+
+        .sliderbox span{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform-origin: center;
+            transform-style: preserve-3d;
+            transform: rotateY(calc(var(--i) * 72deg)) translateZ(400px);
+            -webkit-box-reflect: below 0px linear-gradient(transparent, transparent, #0004);
+        }   
+
+
+        .sliderbox span img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%
+         
+        }
+        .sliderbox span {
+    will-change: transform;
+}
         
+        /* When hovering over the sliderbox, pause the animation */
+.sliderbox:hover {
+    animation-play-state: paused !important;
+}
+
+/* Apply grayscale filter to all images when hovering over the sliderbox */
+.sliderbox:hover img {
+    filter: grayscale(1);
+}
+
+/* Remove grayscale when hovering directly on an image */
+.sliderbox img:hover {
+    filter: grayscale(0);
+}
+
+.work-header{
+    width: 100%;
+    height: 110px;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+        
+#work-svg text {
+  stroke-dasharray: 400; /* Adjust based on your text/path length */
+  stroke-dashoffset: 400;
+  animation: drawText 8s infinite alternate;
+}
+
+@keyframes drawText {
+  from {
+    stroke-dashoffset: 400;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+
+.description-box {
+    display: flex;
+    justify-content: space-between; /* Left and right sections */
+    align-items: stretch;
+    background-color: #1111112d; /* Dark background */
+    color: #fff;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 180px auto;
+    border-radius: 10px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.8);
+}
+
+.left-section, .right-section {
+    width: 48%; /* Each section takes half the space */
+    text-align: left;
+}
+
+h3 {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #bbb;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Hide menu by default */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        text-align: center;
+    }
+
+    nav ul.show {
+        display: flex; /* Show menu when toggled */
+    }
+
+    nav ul li {
+        margin: 15px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 24px;
+        color: #fff;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-inner {
+        flex-direction: column; /* Stack items vertically */
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .svg-container {
+        max-width: 100%;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 2rem; /* Reduce font size */
+    }
+
+    .btn {
+        width: 100%; /* Full-width buttons */
+        text-align: center;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .sliderbox {
+        width: 90%; /* Make slider wider */
+        height: auto; /* Adjust height automatically */
+    }
+
+    .sliderbox span img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .description-box {
+        flex-direction: column; /* Stack sections vertically */
+        align-items: center;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .left-section, .right-section {
+        width: 100%; /* Full width */
+        text-align: left;
+    }
+
+    h3, p {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    #work-svg {
+        width: 90%; /* Make it responsive */
+        height: auto;
+    }
+
+    #work-svg text {
+        font-size: 32px; /* Reduce text size */
+    }
+}
+
+@media (max-width: 768px) {
+  .sliderbox {
+    width: 200px;  /* Reduced width */
+    height: 150px; /* Reduced height */
+  }
+  .sliderbox span {
+    /* Adjust the perspective by reducing translateZ accordingly */
+    transform: rotateY(calc(var(--i) * 72deg)) translateZ(150px);
+  }
+  .svg-container {
+    order: 1; /* SVG comes first */
+}
+
+.hero-content {
+    order: 2; /* Hero text/content comes second */
+}
+}
+
+
+
     </style>
 
     <!-- Google Fonts -->
@@ -386,11 +632,14 @@
     <header>
         <div class="container header-container">
             <div class="logo">MOHAMMAD<span> BAYYA</span></div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
             <nav>
                 <ul>
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="#">Projects</a></li>
+                    <li><a href="#my-work">Projects</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </nav>
@@ -417,7 +666,7 @@
               </div>
 
             <div class="cta-buttons">
-              <a href="#" class="btn">View Portfolio</a>
+              <a href="#my-work" class="btn">View Projects</a>
               <a href="#" class="btn btn-outline">Contact Me</a>
             </div>
           </div>
@@ -659,7 +908,49 @@ l-7 -35 20 25 c20 24 46 117 37 131 -11 19 43 152 94 228 47 70 71 121 56 121
 
 </section>
 
+<Section id="my-work" class="my-work">
 
+
+    <div class="work-header">
+        <div class="work-header">
+            <svg id="work-svg" width="500" height="100" viewBox="0 0 500 100">
+              <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+                    font-size="48" fill="none" stroke="#61dbfb" stroke-width="2">
+                My Work
+              </text>
+            </svg>
+          </div>
+    </div>
+    <div class="sliderbox">
+      <span style="--i:1;"><img src="img/img1.png" alt=""></span>
+      <span style="--i:2;"><img src="img/img2.png" alt=""></span>
+      <span style="--i:3;"><img src="img/img3.png" alt=""></span>
+      <span style="--i:4;"><img src="img/img4.png" alt=""></span>
+      <span style="--i:5;"><img src="img/img5.png" alt=""></span>
+    </div>
+
+    <div class="description-box">
+        <div class="left-section">
+            <h3>🔹 (POS) System</h3>
+            <p>This Point of Sale (POS) system is designed to streamline sales transactions, inventory management, and customer interactions. Built using <strong>Flask and Postgres</strong> for backend functionality, it ensures data persistence while maintaining a lightweight and efficient database.</p>
+            
+            <h3>🔹 User-Friendly Interface</h3>
+            <p>A responsive and intuitive design that enables quick and efficient sales processing. Features a data table with search functionality, ensuring fast access to product information.</p>
+            
+            <h3>🔹 Inventory Management</h3>
+            <p>Allows users to track product stock levels, pricing, and updates in real-time. Supports CSV file uploads, making it easy to bulk-update inventory.</p>
+        </div>
+        <div class="right-section">
+            <h3>🔹 Data Import & Export</h3>
+            <p>Provides an Export to Excel feature, allowing users to download reports for analysis. CSV upload functionality simplifies data entry and updates.</p>
+            <h3>🔹 Sales Transactions</h3>
+            <p>Processes customer purchases with automated calculations for totals and taxes. Enables receipt generation and transaction history tracking for better record-keeping.</p>
+        </div>
+        </div>
+        
+
+
+  </Section>
 
 
 
@@ -677,6 +968,10 @@ allpaths.forEach((path) => {
     path.style.strokeDashoffset = length;
     path.style.setProperty('--length', length); // Store length in CSS variable
 
+    });
+
+    document.querySelector(".menu-toggle").addEventListener("click", function() {
+        document.querySelector("nav ul").classList.toggle("show");
     });
 </script>
 
